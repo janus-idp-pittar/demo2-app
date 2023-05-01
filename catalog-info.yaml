@@ -1,0 +1,36 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "demo2-app"
+  annotations:
+    argocd/app-name: demo2-app-dev
+    backstage.io/kubernetes-id: demo2-app
+    github.com/project-slug: janus-idp-pittar/demo2-app
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.cluster-w9d8b.w9d8b.sandbox2279.opentlc.com/#https://github.com/janus-idp-pittar/demo2-app?che-editor=che-incubator/che-code/insiders&devfilePath=.devfile-vscode.yaml
+      title: CodeReady Workspaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.cluster-w9d8b.w9d8b.sandbox2279.opentlc.com/#https://github.com/janus-idp-pittar/demo2-app?che-editor=che-incubator/che-idea/latest&devfilePath=.devfile-intellij.yaml
+      title: CodeReady Workspaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "quarkus-team"
+  providesApis:
+    - "demo2-app"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "demo2-app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "quarkus-team"
+  definition:
+    $text: ./openapi.yaml
